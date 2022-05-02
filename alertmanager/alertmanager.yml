@@ -1,0 +1,14 @@
+route:
+  receiver: xarb-telegram-bot
+  routes:
+    - matchers:
+        - alertname = DemoAlerts
+      receiver: telegram-bot
+
+receivers:
+  - name: telegram-bot
+    telegram_configs:
+    - bot_token: ${TELEGRAM_BOT_TOKEN}
+      chat_id: ${TELEGRAM_CHAT_ID}
+      api_url: https://api.telegram.org
+      message: "Instance down"
